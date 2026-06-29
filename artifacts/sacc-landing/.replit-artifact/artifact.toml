@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "SACC Landing Page"
+version = "1.0.0"
+id = "artifacts/sacc-landing"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24852
+
+[services.development]
+run = "pnpm --filter @workspace/sacc-landing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/sacc-landing", "run", "build" ]
+publicDir = "artifacts/sacc-landing/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24852"
+BASE_PATH = "/"
