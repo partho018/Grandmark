@@ -1,6 +1,6 @@
 {
   "framework": null,
-  "buildCommand": "cd ../.. && pnpm --filter @workspace/sacc-landing run build",
+  "buildCommand": "pnpm run build",
   "outputDirectory": "dist",
   "rewrites": [
     {
