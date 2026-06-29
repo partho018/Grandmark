@@ -1,4 +1,5 @@
 {
+  "framework": "vite",
   "buildCommand": "pnpm --filter @workspace/sacc-landing run build",
   "outputDirectory": "artifacts/sacc-landing/dist/public",
   "rewrites": [
