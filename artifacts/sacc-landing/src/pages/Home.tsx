@@ -20,6 +20,8 @@ import aboutImg from "@assets/generated_images/saudi_arabia_modern_office_4d76.p
 import proj1Img from "@assets/generated_images/large_commercial_complex_construction_fdc9.png";
 import proj2Img from "@assets/generated_images/electrical_infrastructure_installation_i_8ef2.png";
 import proj3Img from "@assets/generated_images/telecommunications_tower_and_fiber_9b34.png";
+import missionImg from "@assets/generated_images/saudi_arabia_construction_team_907c.png";
+import visionImg from "@assets/generated_images/dramatic_aerial_view_of_4901.png";
 
 function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -347,37 +349,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="py-16 bg-secondary/40">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div {...fadeIn}>
-              <Card className="border-0 shadow-lg bg-white h-full">
-                <CardContent className="p-8">
-                  <div className="w-12 h-12 bg-foreground text-white flex items-center justify-center rounded-none mb-6">
-                    <Briefcase className="h-6 w-6" />
-                  </div>
-                  <h4 className="text-2xl font-bold mb-3">Our Mission</h4>
-                  <p className="text-muted-foreground leading-relaxed">
-                    To be one of the most reliable and preferred contractors/installers in KSA, offering one-stop solutions in Civil Construction, ICT OSP works, Solar Energy Systems, Electrical Power Solutions, and Electro-Mechanical interior fit-outs. Comprehensive coverage across the Kingdom.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-            <motion.div {...fadeIn} transition={{ delay: 0.2 }}>
-              <Card className="border-0 shadow-lg bg-white h-full">
-                <CardContent className="p-8">
-                  <div className="w-12 h-12 bg-primary text-primary-foreground flex items-center justify-center rounded-none mb-6">
-                    <Globe2 className="h-6 w-6" />
-                  </div>
-                  <h4 className="text-2xl font-bold mb-3">Our Vision</h4>
-                  <p className="text-muted-foreground leading-relaxed">
-                    To construct greater value and quality projects for clients and the community at large, through delivering the highest quality level of construction across the Kingdom of Saudi Arabia.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
+      {/* Mission — text left, image right */}
+      <section className="bg-white overflow-hidden">
+        <div className="grid md:grid-cols-2 min-h-[480px]">
+          <motion.div {...fadeIn} className="flex flex-col justify-center px-12 py-20 lg:px-20">
+            <div className="w-12 h-12 bg-foreground flex items-center justify-center mb-6">
+              <Briefcase className="h-6 w-6 text-white" />
+            </div>
+            <h3 className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">Our Mission</h3>
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-foreground mb-6 leading-tight">
+              One-Stop Solutions Across the Kingdom
+            </h2>
+            <p className="text-muted-foreground leading-relaxed text-lg">
+              To be one of the most reliable and preferred contractors/installers in KSA, offering one-stop solutions in Civil Construction, ICT OSP works, Solar Energy Systems, Electrical Power Solutions, and Electro-Mechanical interior fit-outs. We are well positioned to cater to various market developmental needs through comprehensive coverage across the Kingdom.
+            </p>
+          </motion.div>
+          <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="relative min-h-[320px] md:min-h-0">
+            <img
+              src={missionImg}
+              alt="SACC Mission — Engineering Team"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Vision — image left, text right */}
+      <section className="bg-secondary/30 overflow-hidden">
+        <div className="grid md:grid-cols-2 min-h-[480px]">
+          <motion.div {...fadeIn} className="relative min-h-[320px] md:min-h-0 order-2 md:order-1">
+            <img
+              src={visionImg}
+              alt="SACC Vision — Completed Project"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </motion.div>
+          <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="flex flex-col justify-center px-12 py-20 lg:px-20 order-1 md:order-2">
+            <div className="w-12 h-12 bg-primary flex items-center justify-center mb-6">
+              <Globe2 className="h-6 w-6 text-foreground" />
+            </div>
+            <h3 className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">Our Vision</h3>
+            <h2 className="text-3xl md:text-4xl font-bold font-serif text-foreground mb-6 leading-tight">
+              Building Greater Value for the Community
+            </h2>
+            <p className="text-muted-foreground leading-relaxed text-lg">
+              To construct greater value and quality projects for our respected clients and the community at large, through delivering the highest quality level of construction across the Kingdom of Saudi Arabia — from ground to top.
+            </p>
+          </motion.div>
         </div>
       </section>
 
