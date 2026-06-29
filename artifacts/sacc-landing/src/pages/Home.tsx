@@ -339,8 +339,8 @@ export default function Home() {
               </blockquote>
             </motion.div>
             <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="relative">
-              <img src={aboutImg} alt="SACC Construction Project" className="w-full h-[420px] object-cover shadow-2xl" />
-              <div className="absolute -bottom-6 -left-6 bg-primary p-6 shadow-xl hidden md:block">
+              <img src={aboutImg} alt="SACC Construction Project" className="w-full h-[420px] object-cover rounded-2xl shadow-2xl" />
+              <div className="absolute -bottom-6 -left-6 bg-primary p-6 shadow-xl rounded-xl hidden md:block">
                 <p className="text-foreground font-bold text-3xl">12+</p>
                 <p className="text-foreground/80 text-sm font-medium">Cities Covered</p>
               </div>
@@ -350,57 +350,61 @@ export default function Home() {
       </section>
 
       {/* Mission — text left, image right */}
-      <section className="bg-white overflow-hidden">
-        <div className="grid md:grid-cols-2 min-h-[480px]">
-          <motion.div {...fadeIn} className="flex flex-col justify-center px-12 py-20 lg:px-20">
-            <div className="w-12 h-12 bg-foreground flex items-center justify-center mb-6">
-              <Briefcase className="h-6 w-6 text-white" />
-            </div>
-            <h3 className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">Our Mission</h3>
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-foreground mb-6 leading-tight">
-              One-Stop Solutions Across the Kingdom
-            </h2>
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              To be one of the most reliable and preferred contractors/installers in KSA, offering one-stop solutions in Civil Construction, ICT OSP works, Solar Energy Systems, Electrical Power Solutions, and Electro-Mechanical interior fit-outs. We are well positioned to cater to various market developmental needs through comprehensive coverage across the Kingdom.
-            </p>
-          </motion.div>
-          <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="relative min-h-[320px] md:min-h-0">
-            <img
-              src={missionImg}
-              alt="SACC Mission — Engineering Team"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </motion.div>
+      <section className="py-24 bg-secondary/20">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <motion.div {...fadeIn}>
+              <div className="w-12 h-12 bg-foreground flex items-center justify-center mb-6 rounded-xl">
+                <Briefcase className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">Our Mission</h3>
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-foreground mb-6 leading-tight">
+                One-Stop Solutions Across the Kingdom
+              </h2>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                To be one of the most reliable and preferred contractors/installers in KSA, offering one-stop solutions in Civil Construction, ICT OSP works, Solar Energy Systems, Electrical Power Solutions, and Electro-Mechanical interior fit-outs. Comprehensive coverage across the Kingdom.
+              </p>
+            </motion.div>
+            <motion.div {...fadeIn} transition={{ delay: 0.2 }}>
+              <img
+                src={missionImg}
+                alt="SACC Mission — Engineering Team"
+                className="w-full h-[420px] object-cover rounded-2xl shadow-xl"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Vision — image left, text right */}
-      <section className="bg-secondary/30 overflow-hidden">
-        <div className="grid md:grid-cols-2 min-h-[480px]">
-          <motion.div {...fadeIn} className="relative min-h-[320px] md:min-h-0 order-2 md:order-1">
-            <img
-              src={visionImg}
-              alt="SACC Vision — Completed Project"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </motion.div>
-          <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="flex flex-col justify-center px-12 py-20 lg:px-20 order-1 md:order-2">
-            <div className="w-12 h-12 bg-primary flex items-center justify-center mb-6">
-              <Globe2 className="h-6 w-6 text-foreground" />
-            </div>
-            <h3 className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">Our Vision</h3>
-            <h2 className="text-3xl md:text-4xl font-bold font-serif text-foreground mb-6 leading-tight">
-              Building Greater Value for the Community
-            </h2>
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              To construct greater value and quality projects for our respected clients and the community at large, through delivering the highest quality level of construction across the Kingdom of Saudi Arabia — from ground to top.
-            </p>
-          </motion.div>
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <motion.div {...fadeIn} className="order-2 md:order-1">
+              <img
+                src={visionImg}
+                alt="SACC Vision — Completed Project"
+                className="w-full h-[420px] object-cover rounded-2xl shadow-xl"
+              />
+            </motion.div>
+            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="order-1 md:order-2">
+              <div className="w-12 h-12 bg-primary flex items-center justify-center mb-6 rounded-xl">
+                <Globe2 className="h-6 w-6 text-foreground" />
+              </div>
+              <h3 className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">Our Vision</h3>
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-foreground mb-6 leading-tight">
+                Building Greater Value for the Community
+              </h2>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                To construct greater value and quality projects for our respected clients and the community at large, through delivering the highest quality level of construction across the Kingdom of Saudi Arabia.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Services */}
-      <section id="services" className="py-24 bg-white">
+      <section id="services" className="py-24 bg-secondary/20">
         <div className="container mx-auto px-6">
           <motion.div {...fadeIn} className="text-center max-w-2xl mx-auto mb-16">
             <h3 className="text-primary font-semibold tracking-wider uppercase mb-2">Our Expertise</h3>
@@ -410,9 +414,9 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, idx) => (
               <motion.div key={idx} {...fadeIn} transition={{ delay: idx * 0.1 }}>
-                <Card className="h-full border-0 shadow-sm hover:shadow-xl transition-shadow duration-300 rounded-none group cursor-default bg-secondary/20">
+                <Card className="h-full border-0 shadow-sm hover:shadow-xl transition-shadow duration-300 rounded-2xl group cursor-default bg-white">
                   <CardContent className="p-8">
-                    <div className="w-14 h-14 bg-secondary group-hover:bg-primary transition-colors flex items-center justify-center mb-6">
+                    <div className="w-14 h-14 bg-secondary group-hover:bg-primary transition-colors flex items-center justify-center mb-6 rounded-xl">
                       <service.icon className="h-7 w-7 text-foreground" />
                     </div>
                     <h4 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{service.title}</h4>
@@ -461,9 +465,9 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {projects.map((project, idx) => (
               <motion.div key={idx} {...fadeIn} transition={{ delay: idx * 0.15 }} className="group">
-                <div className="overflow-hidden mb-5 relative">
+                <div className="overflow-hidden mb-5 relative rounded-2xl">
                   <img src={project.img} alt={project.title} data-testid={`img-project-${idx}`}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+                    className="w-full h-64 object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute top-4 right-4">
                     <span className={`text-xs font-bold px-3 py-1 ${project.status === "Completed" ? "bg-foreground text-white" : "bg-primary text-foreground"}`}>
                       {project.status}
@@ -490,8 +494,8 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {equipment.map((item, idx) => (
               <motion.div key={idx} {...fadeIn} transition={{ delay: idx * 0.07 }}>
-                <div className="flex flex-col items-center text-center p-6 border border-border hover:border-primary hover:bg-primary/5 transition-all group">
-                  <div className="w-14 h-14 bg-secondary group-hover:bg-primary transition-colors flex items-center justify-center mb-4">
+                <div className="flex flex-col items-center text-center p-6 border border-border hover:border-primary hover:bg-primary/5 transition-all group rounded-2xl bg-white shadow-sm">
+                  <div className="w-14 h-14 bg-secondary group-hover:bg-primary transition-colors flex items-center justify-center mb-4 rounded-xl">
                     <item.icon className="h-7 w-7 text-foreground" />
                   </div>
                   <p className="text-sm font-medium text-foreground leading-snug">{item.label}</p>
@@ -574,7 +578,7 @@ export default function Home() {
       </section>
 
       {/* Careers */}
-      <section id="careers" className="py-24 bg-white">
+      <section id="careers" className="py-24 bg-secondary/20">
         <div className="container mx-auto px-6">
           <motion.div {...fadeIn} className="text-center max-w-2xl mx-auto mb-16">
             <h3 className="text-primary font-semibold tracking-wider uppercase mb-2">Join Our Team</h3>
@@ -584,7 +588,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {jobs.map((job, idx) => (
               <motion.div key={idx} {...fadeIn} transition={{ delay: idx * 0.08 }}>
-                <Card data-testid={`card-job-${idx}`} className="border border-border hover:border-primary hover:shadow-lg transition-all duration-300 rounded-none h-full flex flex-col">
+                <Card data-testid={`card-job-${idx}`} className="border border-border hover:border-primary hover:shadow-lg transition-all duration-300 rounded-2xl h-full flex flex-col bg-white">
                   <CardContent className="p-6 flex flex-col h-full">
                     <div className="flex items-start justify-between mb-4">
                       <div className="w-10 h-10 bg-primary/10 flex items-center justify-center flex-shrink-0">
