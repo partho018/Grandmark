@@ -1,11 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription
+} from "@/components/ui/dialog";
 import {
   MapPin, Zap, Wrench, Users, PhoneCall, Sun, CheckCircle2,
   ChevronRight, Building2, Globe2, Briefcase, Mail, ExternalLink,
   ArrowUpRight, ClipboardList, HardHat, Truck, FlaskConical,
-  Gauge, Drill, Forklift, Cpu, Cable, ShieldCheck, Award, Star
+  Gauge, Drill, Forklift, Cpu, Cable, ShieldCheck, Award, Star,
+  Clock, Banknote, Send
 } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
@@ -39,14 +46,37 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
   return <span ref={ref}>{count.toLocaleString()}{suffix}</span>;
 }
 
+type Job = {
+  title: string;
+  department: string;
+  location: string;
+  type: string;
+  experience: string;
+  description: string;
+  requirements: string[];
+};
+
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const [applied, setApplied] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  function handleApply(e: React.FormEvent) {
+    e.preventDefault();
+    setApplied(true);
+    setTimeout(() => {
+      setSelectedJob(null);
+      setApplied(false);
+      setForm({ name: "", email: "", phone: "", message: "" });
+    }, 2500);
+  }
 
   const fadeIn = {
     initial: { opacity: 0, y: 24 },
@@ -151,6 +181,63 @@ export default function Home() {
     { name: "SEC", full: "Saudi Electricity Company", note: "Power Sector" },
   ];
 
+  const jobs: Job[] = [
+    {
+      title: "Civil Engineer",
+      department: "Civil Works",
+      location: "Riyadh",
+      type: "Full-time",
+      experience: "3–5 years",
+      description: "Lead and supervise civil construction activities on-site, ensuring quality standards and project timelines are met across structural and finishing works.",
+      requirements: ["B.Sc. in Civil Engineering", "3–5 years site experience in KSA", "Proficiency in AutoCAD & MS Project", "Strong knowledge of Saudi building codes"]
+    },
+    {
+      title: "Electrical Site Supervisor",
+      department: "Electrical Works",
+      location: "Dammam",
+      type: "Full-time",
+      experience: "4+ years",
+      description: "Oversee electrical installation works including high/low voltage systems, cable trays, and panel boards at industrial and commercial sites.",
+      requirements: ["Diploma or B.Sc. in Electrical Engineering", "4+ years of electrical site supervision", "Knowledge of SEC regulations", "OSHA/HSE certification preferred"]
+    },
+    {
+      title: "Mechanical Engineer – HVAC",
+      department: "Mechanical Works",
+      location: "Jeddah",
+      type: "Full-time",
+      experience: "3+ years",
+      description: "Design, install, and commission HVAC and electro-mechanical systems for commercial and industrial facilities across the Western Region.",
+      requirements: ["B.Sc. in Mechanical Engineering", "3+ years HVAC project experience", "Familiarity with ASHRAE standards", "AutoCAD MEP skills"]
+    },
+    {
+      title: "ICT / Telecom Technician",
+      department: "Tele-Communication",
+      location: "Multiple Cities",
+      type: "Full-time",
+      experience: "2+ years",
+      description: "Install and maintain ICT OSP infrastructure including fiber optic networks, telecom towers, and structured cabling across KSA.",
+      requirements: ["Diploma in Telecommunications or IT", "2+ years OSP/fiber experience", "Ability to travel across regions", "Certifications in fiber splicing preferred"]
+    },
+    {
+      title: "Solar PV Technician",
+      department: "Solar Energy Systems",
+      location: "Riyadh / Abha",
+      type: "Full-time",
+      experience: "2–4 years",
+      description: "Install, commission, and maintain solar photovoltaic systems for residential, commercial, and industrial clients.",
+      requirements: ["Diploma or B.Sc. in Electrical/Renewable Energy", "Hands-on PV installation experience", "Knowledge of inverter systems", "Valid KSA driving license"]
+    },
+    {
+      title: "HSE Officer",
+      department: "Health, Safety & Environment",
+      location: "Riyadh",
+      type: "Full-time",
+      experience: "3+ years",
+      description: "Implement and monitor HSE programs across all project sites, ensuring full compliance with Saudi regulatory and international safety standards.",
+      requirements: ["NEBOSH / IOSH certification", "3+ years HSE site experience", "Experience with incident reporting", "Strong communication skills in English & Arabic"]
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
 
@@ -166,6 +253,7 @@ export default function Home() {
               { label: "About", href: "#about" },
               { label: "Services", href: "#services" },
               { label: "Projects", href: "#projects" },
+              { label: "Careers", href: "#careers" },
               { label: "Coverage", href: "#coverage" },
             ].map(link => (
               <a key={link.label} href={link.href} data-testid={`nav-link-${link.label.toLowerCase()}`}
@@ -466,6 +554,112 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Careers */}
+      <section id="careers" className="py-24 bg-white">
+        <div className="container mx-auto px-6">
+          <motion.div {...fadeIn} className="text-center max-w-2xl mx-auto mb-16">
+            <h3 className="text-primary font-semibold tracking-wider uppercase mb-2">Join Our Team</h3>
+            <h2 className="text-4xl font-bold mb-4 font-serif text-foreground">Career Opportunities</h2>
+            <p className="text-muted-foreground text-lg">Be part of a growing team building the Kingdom's future. Browse our open positions and apply directly below.</p>
+          </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {jobs.map((job, idx) => (
+              <motion.div key={idx} {...fadeIn} transition={{ delay: idx * 0.08 }}>
+                <Card data-testid={`card-job-${idx}`} className="border border-border hover:border-primary hover:shadow-lg transition-all duration-300 rounded-none h-full flex flex-col">
+                  <CardContent className="p-6 flex flex-col h-full">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="w-10 h-10 bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <HardHat className="h-5 w-5 text-primary" />
+                      </div>
+                      <Badge variant="outline" className="text-xs border-primary/40 text-primary bg-primary/5">{job.type}</Badge>
+                    </div>
+                    <h4 className="text-lg font-bold text-foreground mb-1">{job.title}</h4>
+                    <p className="text-sm text-primary font-medium mb-3">{job.department}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{job.description}</p>
+                    <div className="flex flex-wrap gap-3 text-xs text-muted-foreground mb-5">
+                      <span className="flex items-center gap-1"><MapPin className="h-3 w-3 text-primary" />{job.location}</span>
+                      <span className="flex items-center gap-1"><Clock className="h-3 w-3 text-primary" />{job.experience}</span>
+                    </div>
+                    <Button
+                      data-testid={`button-apply-${idx}`}
+                      className="w-full rounded-none bg-foreground text-white hover:bg-primary hover:text-foreground transition-colors"
+                      onClick={() => { setSelectedJob(job); setApplied(false); }}
+                    >
+                      Apply Now <ChevronRight className="ml-1 h-4 w-4" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div {...fadeIn} className="mt-12 text-center">
+            <p className="text-muted-foreground text-sm">Don't see a matching role? Send your CV to <span className="text-primary font-medium">careers@sacc.sa.com</span></p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Job Application Modal */}
+      <Dialog open={!!selectedJob} onOpenChange={(open) => { if (!open) { setSelectedJob(null); setApplied(false); } }}>
+        <DialogContent className="max-w-lg rounded-none p-0 overflow-hidden">
+          <div className="bg-foreground px-6 py-5">
+            <DialogHeader>
+              <DialogTitle className="text-white text-xl font-bold">{selectedJob?.title}</DialogTitle>
+              <DialogDescription className="text-white/60 text-sm mt-1">
+                {selectedJob?.department} · {selectedJob?.location} · {selectedJob?.type}
+              </DialogDescription>
+            </DialogHeader>
+          </div>
+
+          {applied ? (
+            <div className="flex flex-col items-center justify-center py-16 px-8 text-center">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <CheckCircle2 className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground mb-2">Application Submitted!</h3>
+              <p className="text-muted-foreground text-sm">Thank you for applying. Our HR team will review your application and be in touch shortly.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleApply} className="px-6 py-6 space-y-4">
+              <div className="bg-secondary/40 border border-border p-4 mb-2">
+                <p className="text-xs font-semibold text-foreground uppercase tracking-wider mb-2">Requirements</p>
+                <ul className="space-y-1">
+                  {selectedJob?.requirements.map((req, i) => (
+                    <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                      <CheckCircle2 className="h-3 w-3 text-primary mt-0.5 flex-shrink-0" />{req}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <Label htmlFor="name" className="text-xs font-semibold uppercase tracking-wider">Full Name</Label>
+                  <Input id="name" data-testid="input-name" required placeholder="Your full name" value={form.name}
+                    onChange={e => setForm(f => ({ ...f, name: e.target.value }))} className="rounded-none" />
+                </div>
+                <div className="space-y-1">
+                  <Label htmlFor="phone" className="text-xs font-semibold uppercase tracking-wider">Phone</Label>
+                  <Input id="phone" data-testid="input-phone" required placeholder="+966 5X XXX XXXX" value={form.phone}
+                    onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} className="rounded-none" />
+                </div>
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider">Email Address</Label>
+                <Input id="email" data-testid="input-email" type="email" required placeholder="you@email.com" value={form.email}
+                  onChange={e => setForm(f => ({ ...f, email: e.target.value }))} className="rounded-none" />
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="message" className="text-xs font-semibold uppercase tracking-wider">Cover Note</Label>
+                <Textarea id="message" data-testid="input-message" placeholder="Briefly describe your experience and why you'd like to join SACC..." rows={3} value={form.message}
+                  onChange={e => setForm(f => ({ ...f, message: e.target.value }))} className="rounded-none resize-none" />
+              </div>
+              <Button data-testid="button-submit-application" type="submit" className="w-full rounded-none bg-primary text-foreground hover:bg-primary/90 font-semibold">
+                <Send className="mr-2 h-4 w-4" /> Submit Application
+              </Button>
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* CTA / Contact */}
       <section id="contact" className="py-24 bg-primary relative overflow-hidden">
