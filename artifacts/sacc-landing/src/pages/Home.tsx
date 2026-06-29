@@ -357,12 +357,22 @@ export default function Home() {
               <div className="w-12 h-12 bg-foreground flex items-center justify-center mb-6 rounded-xl">
                 <Briefcase className="h-6 w-6 text-white" />
               </div>
-              <h3 className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">Our Mission</h3>
-              <h2 className="text-3xl md:text-4xl font-bold font-serif text-foreground mb-6 leading-tight">
+              <div className="flex items-center gap-3 mb-3">
+                <h3 className="text-primary font-semibold tracking-wider uppercase text-sm">Our Mission</h3>
+                <span className="text-muted-foreground/40">|</span>
+                <h3 className="text-primary font-semibold text-sm" dir="rtl">مهمتنا</h3>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold font-serif text-foreground mb-2 leading-tight">
                 One-Stop Solutions Across the Kingdom
               </h2>
-              <p className="text-muted-foreground leading-relaxed text-lg">
+              <p className="text-xl font-semibold font-serif text-foreground/70 mb-6 leading-tight" dir="rtl">
+                حلول شاملة في جميع أنحاء المملكة
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-lg mb-4">
                 To be one of the most reliable and preferred contractors/installers in KSA, offering one-stop solutions in Civil Construction, ICT OSP works, Solar Energy Systems, Electrical Power Solutions, and Electro-Mechanical interior fit-outs. Comprehensive coverage across the Kingdom.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-base border-r-4 border-primary pr-4" dir="rtl">
+                أن نكون من أكثر المقاولين موثوقيةً وتميزًا في المملكة العربية السعودية، نقدّم حلولاً متكاملة في أعمال البناء المدني، وشبكات الاتصالات، وأنظمة الطاقة الشمسية، والحلول الكهربائية، والتشطيبات الكهروميكانيكية — بتغطية شاملة في جميع أرجاء المملكة.
               </p>
             </motion.div>
             <motion.div {...fadeIn} transition={{ delay: 0.2 }}>
