@@ -540,24 +540,52 @@ export default function Home() {
       </section>
 
       {/* Valued Customers */}
-      <section className="py-24 bg-secondary/30">
+      <section className="py-24 bg-foreground overflow-hidden">
         <div className="container mx-auto px-6">
-          <motion.div {...fadeIn} className="text-center max-w-2xl mx-auto mb-16">
-            <h3 className="text-primary font-semibold tracking-wider uppercase mb-2">Trusted By</h3>
-            <h2 className="text-4xl font-bold mb-4 font-serif text-foreground">Our Valued Customers</h2>
-            <p className="text-muted-foreground">SACC is proud to serve some of the Kingdom's most prominent organisations across energy, industry, and infrastructure.</p>
-          </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {/* Header row */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+            <motion.div {...fadeIn}>
+              <h3 className="text-primary font-semibold tracking-wider uppercase text-sm mb-3">Trusted By</h3>
+              <h2 className="text-4xl md:text-5xl font-bold font-serif text-white leading-tight">
+                Our Valued<br />Customers
+              </h2>
+            </motion.div>
+            <motion.div {...fadeIn} transition={{ delay: 0.15 }} className="md:max-w-sm">
+              <p className="text-white/50 leading-relaxed text-sm md:text-base">
+                SACC is proud to serve some of the Kingdom's most prominent organisations across energy, industry, and infrastructure.
+              </p>
+              <p className="text-white/30 text-sm mt-2 text-right" dir="rtl">
+                نفخر بخدمة كبرى الشركات والمؤسسات في المملكة العربية السعودية
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Client cards */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/10 rounded-2xl overflow-hidden">
             {clients.map((client, idx) => (
-              <motion.div key={idx} {...fadeIn} transition={{ delay: idx * 0.1 }}>
-                <div data-testid={`card-client-${idx}`}
-                  className="flex flex-col items-center text-center p-6 bg-white border border-border hover:border-primary hover:shadow-md transition-all group">
-                  <div className="w-12 h-12 bg-foreground flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-                    <Star className="h-6 w-6 text-white" />
+              <motion.div key={idx} {...fadeIn} transition={{ delay: idx * 0.08 }}>
+                <div
+                  data-testid={`card-client-${idx}`}
+                  className="relative bg-foreground p-8 group hover:bg-white/5 transition-colors duration-300 overflow-hidden min-h-[180px] flex flex-col justify-between cursor-default"
+                >
+                  {/* Watermark abbreviation */}
+                  <span className="absolute -bottom-4 -right-2 text-8xl font-black text-white/[0.04] select-none pointer-events-none leading-none group-hover:text-primary/10 transition-colors duration-300">
+                    {client.name.split(" ")[0]}
+                  </span>
+
+                  {/* Top: gold dot + sector badge */}
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="w-2 h-2 rounded-full bg-primary group-hover:scale-125 transition-transform" />
+                    <span className="text-[10px] font-bold tracking-widest uppercase text-primary/80 bg-primary/10 px-2 py-1 rounded-full">
+                      {client.note}
+                    </span>
                   </div>
-                  <p className="font-bold text-foreground text-base mb-1">{client.name}</p>
-                  <p className="text-xs text-muted-foreground mb-1">{client.full}</p>
-                  <p className="text-xs text-primary font-medium">{client.note}</p>
+
+                  {/* Bottom: names */}
+                  <div>
+                    <p className="text-2xl font-bold text-white mb-1 leading-tight">{client.name}</p>
+                    <p className="text-sm text-white/40">{client.full}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
