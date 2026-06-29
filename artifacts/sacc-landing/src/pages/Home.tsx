@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, HardHat, Zap, Wrench, Users, PhoneCall, Sun, CheckCircle2, ChevronRight, Building2, Globe2, Briefcase } from "lucide-react";
+import { MapPin, Zap, Wrench, Users, PhoneCall, Sun, CheckCircle2, ChevronRight, Building2, Globe2, Briefcase, Mail, ExternalLink, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import aboutImg from "@assets/generated_images/saudi_arabia_modern_office_4d76.png";
@@ -324,10 +324,119 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-white/60 py-12 text-center">
-        <div className="container mx-auto px-6">
-          <p className="mb-2">Sulaiman Abdullah For Contracting Company | شركة سليمان عبد الله للمقاولات</p>
-          <p className="text-sm">© {new Date().getFullYear()} SACC. All rights reserved.</p>
+      <footer className="bg-foreground text-white">
+        {/* Main footer body */}
+        <div className="container mx-auto px-6 pt-16 pb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
+            {/* Brand column */}
+            <div className="lg:col-span-1">
+              <div className="mb-4">
+                <p className="text-2xl font-bold tracking-tight text-white">SACC</p>
+                <p className="text-white/50 text-xs mt-1">شركة سليمان عبد الله للمقاولات</p>
+              </div>
+              <p className="text-white/60 text-sm leading-relaxed mb-6">
+                Your trusted partner in construction — delivering quality projects across the Kingdom of Saudi Arabia since inception.
+              </p>
+              <div className="flex flex-col gap-2">
+                <span className="inline-flex items-center gap-2 text-xs text-white/40 font-medium uppercase tracking-wider">Approved Vendors</span>
+                <div className="flex gap-3">
+                  <span className="text-xs border border-white/20 text-white/60 px-3 py-1">SBG #15739</span>
+                  <span className="text-xs border border-white/20 text-white/60 px-3 py-1">Zamil #9667</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-sm font-semibold uppercase tracking-widest text-white/40 mb-6">Quick Links</h4>
+              <ul className="space-y-3">
+                {[
+                  { label: "About Us", href: "#about" },
+                  { label: "Our Services", href: "#services" },
+                  { label: "Projects", href: "#projects" },
+                  { label: "Coverage", href: "#coverage" },
+                  { label: "Why Choose Us", href: "#why" },
+                  { label: "Contact", href: "#contact" },
+                ].map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      data-testid={`footer-link-${link.label.toLowerCase().replace(/\s/g, "-")}`}
+                      className="text-white/60 hover:text-primary transition-colors text-sm flex items-center gap-1 group"
+                    >
+                      <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services */}
+            <div>
+              <h4 className="text-sm font-semibold uppercase tracking-widest text-white/40 mb-6">Our Services</h4>
+              <ul className="space-y-3">
+                {[
+                  "Civil Works",
+                  "Electrical Works",
+                  "Mechanical Works",
+                  "Manpower Services",
+                  "Tele-Communication",
+                  "Solar Energy Systems",
+                ].map((s) => (
+                  <li key={s} className="text-white/60 text-sm flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block flex-shrink-0" />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h4 className="text-sm font-semibold uppercase tracking-widest text-white/40 mb-6">Contact</h4>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <Globe2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <a
+                    href="https://www.sacc.sa.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid="footer-link-website"
+                    className="text-white/60 hover:text-primary transition-colors text-sm flex items-center gap-1"
+                  >
+                    www.sacc.sa.com
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-white/60 text-sm">Kingdom of Saudi Arabia<br />Nationwide Operations</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <PhoneCall className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-white/60 text-sm">Contact via website</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-white/60 text-sm">info@sacc.sa.com</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-white/10">
+          <div className="container mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-white/40 text-xs">
+              © {new Date().getFullYear()} Sulaiman Abdullah For Contracting Company. All rights reserved.
+            </p>
+            <p className="text-white/30 text-xs">
+              Complete Manpower Solutions From Ground To Top
+            </p>
+          </div>
         </div>
       </footer>
     </div>
