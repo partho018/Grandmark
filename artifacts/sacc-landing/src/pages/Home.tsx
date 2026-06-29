@@ -4,6 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { MapPin, HardHat, Zap, Wrench, Users, PhoneCall, Sun, CheckCircle2, ChevronRight, Building2, Globe2, Briefcase } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import aboutImg from "@assets/generated_images/saudi_arabia_modern_office_4d76.png";
+import proj1Img from "@assets/generated_images/large_commercial_complex_construction_fdc9.png";
+import proj2Img from "@assets/generated_images/electrical_infrastructure_installation_i_8ef2.png";
+import proj3Img from "@assets/generated_images/telecommunications_tower_and_fiber_9b34.png";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,6 +45,30 @@ export default function Home() {
     "Skilled engineering & project management team"
   ];
 
+  const projects = [
+    {
+      img: proj1Img,
+      category: "Civil Works",
+      title: "Commercial Complex Development",
+      desc: "Large-scale commercial structure with multi-level concrete framing, steel superstructure, and full site management across multiple phases.",
+      status: "Completed"
+    },
+    {
+      img: proj2Img,
+      category: "Electrical Works",
+      title: "Industrial Facility Power Systems",
+      desc: "Full electrical infrastructure installation for a major industrial facility, including panel boards, cable trays, and high-voltage distribution.",
+      status: "Completed"
+    },
+    {
+      img: proj3Img,
+      category: "Tele-Communication",
+      title: "Nationwide Telecom Network Rollout",
+      desc: "ICT OSP and telecommunications tower installation across multiple regions, delivering connectivity infrastructure for a leading Saudi operator.",
+      status: "Ongoing"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
       
@@ -58,6 +86,7 @@ export default function Home() {
           <nav className="hidden md:flex items-center gap-8">
             <a href="#about" data-testid="nav-link-about" className={`text-sm font-medium transition-colors hover:text-primary ${scrolled ? "text-foreground" : "text-white"}`}>About</a>
             <a href="#services" data-testid="nav-link-services" className={`text-sm font-medium transition-colors hover:text-primary ${scrolled ? "text-foreground" : "text-white"}`}>Services</a>
+            <a href="#projects" data-testid="nav-link-projects" className={`text-sm font-medium transition-colors hover:text-primary ${scrolled ? "text-foreground" : "text-white"}`}>Projects</a>
             <a href="#coverage" data-testid="nav-link-coverage" className={`text-sm font-medium transition-colors hover:text-primary ${scrolled ? "text-foreground" : "text-white"}`}>Coverage</a>
             <Button data-testid="button-nav-contact" className={`${!scrolled && "bg-white text-foreground hover:bg-white/90"}`} onClick={() => document.getElementById("contact")?.scrollIntoView()}>
               Get In Touch
@@ -118,8 +147,27 @@ export default function Home() {
                 "We're a team of professionals who understand what customer needs are and trying to fulfill those requirements in appropriate span of time within their budget."
               </blockquote>
             </motion.div>
-            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="grid grid-cols-1 gap-6">
-              <Card className="border-0 shadow-lg bg-secondary/30">
+            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="relative">
+              <img
+                src={aboutImg}
+                alt="SACC Construction Project"
+                className="w-full h-[420px] object-cover shadow-2xl"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-primary p-6 shadow-xl hidden md:block">
+                <p className="text-foreground font-bold text-3xl">12+</p>
+                <p className="text-foreground/80 text-sm font-medium">Cities Covered</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="py-16 bg-secondary/40">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div {...fadeIn}>
+              <Card className="border-0 shadow-lg bg-white h-full">
                 <CardContent className="p-8">
                   <div className="w-12 h-12 bg-foreground text-white flex items-center justify-center rounded-none mb-6">
                     <Briefcase className="h-6 w-6" />
@@ -130,7 +178,9 @@ export default function Home() {
                   </p>
                 </CardContent>
               </Card>
-              <Card className="border-0 shadow-lg bg-primary/5">
+            </motion.div>
+            <motion.div {...fadeIn} transition={{ delay: 0.2 }}>
+              <Card className="border-0 shadow-lg bg-white h-full">
                 <CardContent className="p-8">
                   <div className="w-12 h-12 bg-primary text-primary-foreground flex items-center justify-center rounded-none mb-6">
                     <Globe2 className="h-6 w-6" />
@@ -147,7 +197,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-24 bg-secondary">
+      <section id="services" className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <motion.div {...fadeIn} className="text-center max-w-2xl mx-auto mb-16">
             <h3 className="text-primary font-semibold tracking-wider uppercase mb-2">Our Expertise</h3>
@@ -156,7 +206,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, idx) => (
               <motion.div key={idx} {...fadeIn} transition={{ delay: idx * 0.1 }}>
-                <Card className="h-full border-0 shadow-sm hover:shadow-xl transition-shadow duration-300 rounded-none group cursor-default bg-white">
+                <Card className="h-full border-0 shadow-sm hover:shadow-xl transition-shadow duration-300 rounded-none group cursor-default bg-secondary/20">
                   <CardContent className="p-8">
                     <div className="w-14 h-14 bg-secondary group-hover:bg-primary transition-colors flex items-center justify-center mb-6">
                       <service.icon className="h-7 w-7 text-foreground" />
@@ -165,6 +215,39 @@ export default function Home() {
                     <p className="text-muted-foreground">{service.desc}</p>
                   </CardContent>
                 </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-24 bg-secondary/30">
+        <div className="container mx-auto px-6">
+          <motion.div {...fadeIn} className="text-center max-w-2xl mx-auto mb-16">
+            <h3 className="text-primary font-semibold tracking-wider uppercase mb-2">Our Work</h3>
+            <h2 className="text-4xl font-bold mb-4 font-serif text-foreground">Featured Projects</h2>
+            <p className="text-muted-foreground text-lg">A selection of completed and ongoing construction projects across Saudi Arabia.</p>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {projects.map((project, idx) => (
+              <motion.div key={idx} {...fadeIn} transition={{ delay: idx * 0.15 }} className="group">
+                <div className="overflow-hidden mb-5 relative">
+                  <img
+                    src={project.img}
+                    alt={project.title}
+                    data-testid={`img-project-${idx}`}
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <span className={`text-xs font-bold px-3 py-1 ${project.status === "Completed" ? "bg-foreground text-white" : "bg-primary text-foreground"}`}>
+                      {project.status}
+                    </span>
+                  </div>
+                </div>
+                <p className="text-primary text-sm font-semibold uppercase tracking-wider mb-2">{project.category}</p>
+                <h4 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">{project.title}</h4>
+                <p className="text-muted-foreground leading-relaxed text-sm">{project.desc}</p>
               </motion.div>
             ))}
           </div>

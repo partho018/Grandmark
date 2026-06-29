@@ -6,3 +6,21 @@ id = "5qw2ZRpnQ8mSxcD-uttt4"
 uri = "file://artifacts/sacc-landing/public/hero-bg.png"
 type = "image"
 title = "Saudi construction site golden hour"
+
+[[generated]]
+id = "dcjFn1-Xiw6tmZj8fGEmG"
+uri = "file://attached_assets/generated_images/large_commercial_complex_construction_fdc9.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "FheYoOSYgTDllYkHVqYfu"
+uri = "file://attached_assets/generated_images/electrical_infrastructure_installation_i_8ef2.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "eS2EA4gwEMZQiGV8IoYMQ"
+uri = "file://attached_assets/generated_images/telecommunications_tower_and_fiber_9b34.png"
+type = "image"
+title = "generated_image"
